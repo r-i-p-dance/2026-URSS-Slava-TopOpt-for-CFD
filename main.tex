@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+
+\title{2026 URSS Slava | TopOpt for CFD}
+\author{Slava Stopul}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Resources} \\
+Before delving into the textbooks, having a read of this (hopefully enjoyable) set of \href{https://cbeaume.com/download/FFM.pdf}{lecture notes} could be a useful way to get acquainted with some of the relevant terminology. I would then follow the more mathematical derivation-oriented style in the Ruban textbook, followed by the computational discussions in the book by Hinch. We can then get quite subject-specific with resources for adjoints, optimization and numerical methods of choice. 
+
+\section{Papers Review}
+
+\subsection{BGK COllision Operator}
+\textit{Bhatnagar, Gross \& Krook (1954) — "A Model for Collision Processes in Gases. I. Small Amplitude Processes in Charged and Neutral One-Component Systems." Physical Review, 94(3), 511–525.} \\
+\\
+\textbf{Objective:} BGK approximation replaces the original Boltzmann Equation formulated in 1872. The latter perfectly describes how a gas flows, calculating the exact trajectory and momentum transfer of every possible pair of molecules bouncing off each other. It was extremely difficult to solve for application purposes. \\
+\textbf{Parameter space:} \\
+\textbf{Results:} BGK approximation comes from the assumption that it is not necessary to know the precise interactions between molecules. Instead assume, no matter how chaotic the collisions are, their purpose is to force the fluid towards the state of equilibrium at a constant rate. This turns an unsolvable integral into simple algebra: 
+
+$$\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla f + \frac{\mathbf{F}}{m} \cdot \nabla_v f = -\nu (f - n \Phi_0)$$
+
+$f$ - particle distribution \\
+$n \Phi_0$ - local Maxwellian equilibrium distribution \\
+$\nu$ - collision frequency, inverse of the relaxation time ($1/\tau$) \\
+
+Later, LBM was created by using BGK relaxation on a discrete 2D grid (D2Q9):
+
+$$\Omega_i = -\frac{1}{\tau} (f_i - f_i^{eq})$$
+
+\textbf{Areas for improvement:} BGK uses a simple relaxation time for everything 
+
+\end{document}
