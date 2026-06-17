@@ -33,5 +33,6 @@ Later, LBM was created by using BGK relaxation on a discrete 2D grid (D2Q9):
 $$\Omega_i = -\frac{1}{\tau} (f_i - f_i^{eq})$$
 
 \textbf{Areas for improvement:} BGK uses a simple relaxation time for everything 
+High Mach Numbers: The BGK approximation only holds tightly when the fluid is relatively close to equilibrium (incompressible, low Mach number flows). If you try to simulate supersonic shockwaves, the basic BGK model falls apart and explodes into numerical instability.
 
 \end{document}
